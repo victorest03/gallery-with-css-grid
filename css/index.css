@@ -90,24 +90,26 @@ img{
 }
 
 .tabs{
+    background-color: burlywood;
+    border: solid 1px burlywood;
     border-radius: 8px;
     overflow: hidden;
-    border: solid 1px #95db81;
-    background-color: #95db81;
 }
 
-.tab{
-    width: 100%;
-    overflow: hidden;
+.tabs__item > input{
+    display: none;
 }
 
-.tab > input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
+.tabs__item.closeall > label{
+    display: block;
+    text-align: center;
+    padding: 0.5em 0.2em;
+    background: black;
+    color: white;
+    font-size: 0.85em;
 }
 
-.tab__title{
+.tabs__item__title{
     display: flex;
     justify-content: space-between;
     padding: 1em;
@@ -115,41 +117,30 @@ img{
     cursor: pointer;
 }
 
-.tab__title::after{
+.tabs__item__title::after{
     content: "\276F";
     width: 1em;
     height: 1em;
     text-align: center;
-    transition: all .35s;
     line-height: 1em;
+    transition: all .35s;
 }
 
-.tab__content{
-    display: block;
-    max-height: 0;
+.tabs__item__content{
     background-color: #FFFFFF;
+    height: 0;
     overflow: hidden;
     padding: 0 1em;
     transition: all 0.35s;
 }
 
-.tab > input:checked ~ .tab__content {
-    max-height: 100vh;
+.tabs__item > input:checked ~ .tabs__item__content{
+    height: auto;
     padding: 1em;
 }
 
-.tab > input:checked + .tab__title::after{
+.tabs__item > input:checked + .tabs__item__title::after{
     transform: rotate(90deg);
-}
-
-.tab__content li{
-    list-style: none;
-    padding: 5px 10px;
-}
-
-.tab__content li a{
-    text-decoration: none;
-    color: initial;
 }
 
 @media only screen and (min-width: 768px){
